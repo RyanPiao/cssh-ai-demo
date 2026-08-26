@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Argue With the AI</title>
+<style>
+  :root{
+    --bg:#faf7f2; --surface:#fffdf9; --ink:#2b2622; --muted:#6b6157;
+    --accent:#b23a2e; --accent2:#2f6f5e; --line:#e6ddd0;
+    --ai:#eef3f1; --stu:#f6ece6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1a1714; --surface:#221e19; --ink:#f0e9df; --muted:#a79a8a;
+      --accent:#e0745f; --accent2:#6fbfa6; --line:#372f27;
+      --ai:#20302b; --stu:#302420;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    padding:5vmin;display:flex;justify-content:center}
+  .wrap{max-width:900px;width:100%}
+  .kick{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+  h1{font-size:clamp(1.6rem,5vw,2.5rem);line-height:1.1;margin:.25em 0 .15em}
+  .sub{color:var(--muted);font-size:clamp(1rem,2.4vw,1.15rem);margin-bottom:1.4em}
+  .pattern{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+    border-radius:10px;padding:16px 20px;margin-bottom:1.6em}
+  .pattern b{color:var(--accent2)}
+  .chat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:1.4em}
+  .msg{padding:12px 16px;border-radius:12px;margin:10px 0;max-width:92%}
+  .ai{background:var(--ai);border:1px solid var(--line)}
+  .stu{background:var(--stu);border:1px solid var(--line);margin-left:auto}
+  .who{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.3em}
+  .flag{color:var(--accent);font-weight:600}
+  .dims{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:1.4em}
+  @media(max-width:600px){.dims{grid-template-columns:1fr}}
+  .dim{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .dim h3{margin:0 0 .2em;font-size:.82rem;color:var(--accent2);text-transform:uppercase;letter-spacing:.04em}
+  .dim p{margin:0;font-size:.92rem;color:var(--muted)}
+  .adapt{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:14px 18px;font-size:.95rem}
+  .adapt b{color:var(--accent)}
+  code{background:rgba(128,128,128,.14);padding:.08em .38em;border-radius:5px;font-size:.9em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">A transferable teaching pattern · ECON 2316 example</div>
+  <h1>Argue With the AI</h1>
+  <div class="sub">The AI defends a claim that sounds right but hides a flaw. The student's job:
+    use course theory to catch it. Learning happens in the <em>evaluation</em>, not the answer.</div>
+
+  <div class="pattern">
+    <b>The pattern (any discipline):</b> give students an AI that confidently states a defensible-but-wrong
+    position → they must rebut it with course concepts → they grade the AI's reasoning.
+    Here it's micro theory; swap the claim for your field.
+  </div>
+
+  <div class="chat">
+    <div class="msg ai">
+      <div class="who">AI</div>
+      Perfect price discrimination eliminates deadweight loss — output reaches the competitive level.
+      So it's <em>efficient</em>, which means it's the <strong>best outcome for society</strong>.
+    </div>
+    <div class="msg stu">
+      <div class="who">Student</div>
+      Careful — you conflated <span class="flag">efficiency</span> with <span class="flag">welfare</span>.
+      Yes, perfect price discrimination removes the deadweight loss, so it's allocatively efficient.
+      But it does that by transferring <em>all</em> consumer surplus to the monopolist — consumers are left
+      with zero. "Efficient" only means the surplus isn't wasted; it says nothing about who gets it or
+      whether that's <em>good</em>. A distributional judgment is separate from efficiency.
+    </div>
+    <div class="msg ai">
+      <div class="who">AI</div>
+      You're right. I overstated it — efficiency (no DWL) is not the same as desirability. The equity
+      question is distinct, and I collapsed the two.
+    </div>
+  </div>
+
+  <div class="dims">
+    <div class="dim"><h3>AI-THINK</h3><p>Student evaluates and corrects AI output using theory — the core AI-readiness skill.</p></div>
+    <div class="dim"><h3>AI-DATA</h3><p>Sees a concrete limit of LLMs: fluent, confident, and still wrong.</p></div>
+    <div class="dim"><h3>AI-ETHICS</h3><p>Efficiency vs. equity — models can smuggle value judgments into "neutral" claims.</p></div>
+    <div class="dim"><h3>AI-CREATE</h3><p>The human adds the judgment the AI lacked — the value-add that stays theirs.</p></div>
+  </div>
+
+  <div class="adapt">
+    <b>Adapt it:</b> History — AI defends a tidy but contested narrative; students cite sources.
+    Philosophy — AI argues an ethics position; students find the hidden premise.
+    Policy — AI recommends a "efficient" policy; students surface who bears the cost.
+    <em>Same pattern, your discipline.</em>
+  </div>
+</div>
+</body>
+</html>

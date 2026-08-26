@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLP, Now Teachable</title>
+<style>
+  :root{
+    --bg:#faf7f2; --surface:#fffdf9; --ink:#2b2622; --muted:#6b6157;
+    --accent:#b23a2e; --accent2:#2f6f5e; --line:#e6ddd0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1a1714; --surface:#221e19; --ink:#f0e9df; --muted:#a79a8a;
+      --accent:#e0745f; --accent2:#6fbfa6; --line:#372f27;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    display:flex;min-height:100vh;align-items:center;justify-content:center;padding:5vmin}
+  .card{max-width:960px;width:100%;background:var(--surface);border:1px solid var(--line);
+    border-radius:18px;padding:clamp(24px,5vmin,56px);box-shadow:0 10px 40px rgba(0,0,0,.08)}
+  .kick{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+  h1{font-size:clamp(1.7rem,5vw,2.8rem);line-height:1.1;margin:.3em 0 .1em}
+  h1 .em{color:var(--accent)}
+  .sub{color:var(--muted);font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:1.6em}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:640px){.cols{grid-template-columns:1fr}}
+  .panel{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--bg)}
+  .panel h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin:0 0 .7em}
+  .before h2{color:var(--muted)}
+  .after h2{color:var(--accent2)}
+  ul{margin:0;padding-left:1.1em} li{margin:.35em 0}
+  .before li{color:var(--muted)}
+  code{background:rgba(128,128,128,.14);padding:.1em .4em;border-radius:5px;font-size:.9em}
+  .foot{margin-top:1.6em;padding-top:1.2em;border-top:1px solid var(--line);
+    font-size:1.05rem}
+  .foot b{color:var(--accent)}
+  .tag{display:inline-block;margin-top:1em;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="kick">The barrier is gone</div>
+    <h1>A research method,<br><span class="em">now teachable in a class.</span></h1>
+    <div class="sub">BLP random-coefficients demand estimation — the workhorse of modern empirical
+      industrial organization — used to be a semester of specialist code. AI collapsed that.</div>
+
+    <div class="cols">
+      <div class="panel before">
+        <h2>Before — a wall</h2>
+        <ul>
+          <li>Graduate-only: GMM, contraction mappings, instruments</li>
+          <li>Hundreds of lines of fragile estimation code</li>
+          <li>Weeks of setup before a student sees a result</li>
+          <li>Out of reach for undergraduates entirely</li>
+        </ul>
+      </div>
+      <div class="panel after">
+        <h2>After — a conversation</h2>
+        <ul>
+          <li>Ask in plain language; AI drives <code>pyblp</code></li>
+          <li>Estimate demand, elasticities, markups, mergers</li>
+          <li>Students see a real result in one class</li>
+          <li>Focus shifts to <b>interpreting</b>, not wrestling syntax</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot">
+      The point isn't the code. It's that <b>AI lowers the barrier to teach hard things</b> —
+      and frees class time for the judgment that makes students AI-ready.
+    </div>
+    <div class="tag">Demo artifact · CSSH AI Teaching Innovation · built from the open <code>blp-claude-skill</code></div>
+  </div>
+</body>
+</html>
