@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSSH Assignment Toolkit</title>
+<style>
+  :root{
+    --bg:#faf7f2; --surface:#fffdf9; --ink:#2b2622; --muted:#6b6157;
+    --accent:#b23a2e; --accent2:#2f6f5e; --line:#e6ddd0; --chip:#f2ebe0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1a1714; --surface:#221e19; --ink:#f0e9df; --muted:#a79a8a;
+      --accent:#e0745f; --accent2:#6fbfa6; --line:#372f27; --chip:#2b2620;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    padding:5vmin;max-width:920px;margin-inline:auto}
+  .kick{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}
+  h1{font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.08;margin:.25em 0 .2em}
+  .lede{color:var(--muted);font-size:clamp(1rem,2.3vw,1.15rem);max-width:60ch;margin-bottom:1.4em}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    padding:9px 15px;border-radius:999px;cursor:pointer;font-size:.92rem;font-weight:600}
+  .tab[aria-selected="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .panel{display:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+  .panel[data-active="true"]{display:block}
+  .panel h2{margin:0 0 .1em;font-size:1.3rem}
+  .panel .who{font-size:.8rem;color:var(--muted);margin-bottom:1em}
+  .lever{border-left:3px solid var(--accent2);padding:2px 0 2px 14px;margin:14px 0}
+  .lever b{color:var(--accent2)}
+  .lever .ex{font-size:.92rem;color:var(--muted);margin-top:3px}
+  .diag{background:var(--chip);border-radius:10px;padding:14px 18px;margin:4px 0 2px}
+  .diag li{margin:.35em 0}
+  .foot{margin-top:1.8em;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1em}
+  .foot b{color:var(--ink)}
+  code{background:var(--chip);padding:.08em .4em;border-radius:5px;font-size:.9em}
+</style>
+</head>
+<body>
+  <div class="kick">CSSH · AI in Teaching</div>
+  <h1>Assignment Toolkit</h1>
+  <p class="lede">A self-serve guide to make assignments AI-resistant while keeping your learning goals. Pick your assignment type. <em>(Prototype — for our review.)</em></p>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-p="start">Start here</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="disc">Discussion prompts</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="paper">Papers &amp; essays</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="quant">Quantitative / data</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="any">Any assignment</button>
+  </div>
+
+  <div class="panel" data-active="true" id="start">
+    <h2>Is this assignment AI-vulnerable?</h2>
+    <div class="who">30-second diagnosis</div>
+    <ul class="diag">
+      <li>Could a generic AI tool answer it well <b>without doing the reading?</b></li>
+      <li>Could a student answer from <b>general/news knowledge</b> instead of the specific material?</li>
+      <li>Does it only ask <b>“what do you think / what resonates?”</b></li>
+    </ul>
+    <p>If <b>yes</b> to any, pick your assignment type above for concrete fixes. You don't need all of them — one or two meaningfully reduces vulnerability.</p>
+  </div>
+
+  <div class="panel" id="disc">
+    <h2>Discussion prompts &amp; qualitative work</h2>
+    <div class="who">The Four Levers — from Linda Kowalcky's checklist</div>
+    <div class="lever"><b>1 · Anchor</b> to something AI can't know — a personal/local/specific referent (a real policy, event, dataset).<div class="ex">“Name a real policy in your life; apply the principle to it.”</div></div>
+    <div class="lever"><b>2 · Trace the “why”</b>, not the “what” — require the mechanism, not a summary.<div class="ex">“Pick one design element; explain why <em>that</em> one had to change.”</div></div>
+    <div class="lever"><b>3 · Build in peer dependency</b> — the follow-up needs classmates' specific input.<div class="ex">“Compare examples across your group; report the best pair.”</div></div>
+    <div class="lever"><b>4 · Require a textual reference</b> — a page number / quoted term in the pre-discussion post.</div>
+  </div>
+
+  <div class="panel" id="paper">
+    <h2>Papers &amp; essays</h2>
+    <div class="who">Built for non-writing courses with no in-class draft time</div>
+    <div class="lever"><b>Anchor to the text + your framing</b> — require named passages (page numbers) <em>and</em> a concept from your own lectures. AI can't know how you framed it.</div>
+    <div class="lever"><b>Add a light process memo</b> (½–1 pg) — thesis, what changed as you read, the turning-point passage. Quick to skim, hard to fake.</div>
+    <div class="lever"><b>Add an oral beat</b> — a 3–5 min “walk me through your argument” (office hours, class slot, or 2-min video).</div>
+    <div class="lever"><b>AI-as-source-to-critique</b> — students run their prompt through AI, then critique what it got wrong about the specific text.</div>
+  </div>
+
+  <div class="panel" id="quant">
+    <h2>Quantitative / data assignments</h2>
+    <div class="who">Grade thinking, not output</div>
+    <div class="lever"><b>Grade interpretation</b> — AI can produce the regression; require interpreting, critiquing, and justifying specification choices.</div>
+    <div class="lever"><b>Anchor to a chosen dataset/case</b> + a decision log (“why this method, why this variable”).</div>
+    <div class="lever"><b>Argue with the AI</b> — students find the model's errors or bad assumptions.</div>
+    <div class="lever"><b>Verify live</b> — a short in-class replication or explain-your-code moment.</div>
+  </div>
+
+  <div class="panel" id="any">
+    <h2>Moves that work on any assignment</h2>
+    <div class="lever"><b>Separate practice from assessment</b> — practice low-stakes; put high stakes where you can verify (in-class, oral, proctored).</div>
+    <div class="lever"><b>Grade process + product</b> — drafts, reflections, version history, checkpoints.</div>
+    <div class="lever"><b>Protect the early, generative stage</b> — first independent thinking before AI enters.</div>
+    <div class="lever"><b>Make AI expectations explicit — and explain <em>why</em></b> — what skill the task builds, why the shortcut bypasses it.</div>
+  </div>
+
+  <div class="foot">
+    Grounded in Northeastern's <b>AI Readiness Framework</b> and the <b>“Assessment in an AI-Enabled World”</b> faculty guide.
+    Discussion-prompt levers adapted from <b>Linda Kowalcky's</b> Discussion Prompt Redesign Checklist.
+    A CSSH AI Teaching Innovation + Curricular Transformation resource.
+  </div>
+
+<script>
+  const tabs=[...document.querySelectorAll('.tab')];
+  const panels=[...document.querySelectorAll('.panel')];
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.setAttribute('aria-selected', x===t));
+    panels.forEach(p=>p.setAttribute('data-active', p.id===t.dataset.p));
+  }));
+</script>
+</body>
+</html>
