@@ -3,98 +3,165 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI in Teaching — CSSH</title>
+<title>AI in Teaching · CSSH · Northeastern University</title>
 <style>
   :root{
-    --bg:#faf7f2; --surface:#fffdf9; --ink:#2b2622; --muted:#6b6157;
-    --accent:#b23a2e; --accent2:#2f6f5e; --line:#e6ddd0; --chip:#f2ebe0;
+    --red:#d41b2c; --red-dark:#a3141f; --black:#0d0d0d; --ink:#1c1c1c;
+    --muted:#5c5c5c; --bg:#ffffff; --surface:#faf9f8; --line:#e3e0dd; --chip:#f4f1ee;
+    --accent2:#2f6f5e;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#1a1714; --surface:#221e19; --ink:#f0e9df; --muted:#a79a8a;
-      --accent:#e0745f; --accent2:#6fbfa6; --line:#372f27; --chip:#2b2620;
+      --red:#ff5a5f; --red-dark:#ff8085; --black:#f4f2f0; --ink:#eceae8;
+      --muted:#a7a19b; --bg:#141210; --surface:#1e1b18; --line:#332e29; --chip:#26221e;
+      --accent2:#6fbfa6;
     }
   }
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    padding:5vmin;max-width:960px;margin-inline:auto}
-  header{text-align:center;margin-bottom:2em}
-  .kick{color:var(--accent);font-weight:700;letter-spacing:.09em;text-transform:uppercase;font-size:.8rem}
-  h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.05;margin:.2em 0 .3em}
-  .lede{color:var(--muted);font-size:clamp(1.05rem,2.6vw,1.25rem);max-width:64ch;margin:0 auto}
-  .intro{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:18px 22px;margin:2em 0}
-  .intro p{margin:.4em 0}
-  h2{font-size:1.35rem;margin:1.8em 0 .2em}
-  .sec-sub{color:var(--muted);margin:0 0 1em}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-  a.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;
-    padding:18px 20px;text-decoration:none;color:var(--ink)}
-  a.card:hover{border-color:var(--accent2);transform:translateY(-2px);transition:.15s}
-  a.card b{display:block;color:var(--accent);font-size:1.05rem;margin-bottom:.25em}
+    font:16px/1.6 "Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+  a{color:var(--red)}
+  /* top bar */
+  .topbar{background:var(--black);color:#fff;padding:10px 20px;font-size:.82rem;letter-spacing:.02em}
+  .topbar b{color:#fff}
+  .topbar .r{color:var(--red)}
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:2px solid var(--red);
+    display:flex;flex-wrap:wrap;gap:4px;padding:10px 16px;align-items:center;justify-content:center}
+  nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.9rem;padding:6px 12px;border-radius:6px}
+  nav a:hover{background:var(--chip);color:var(--red)}
+  .wrap{max-width:940px;margin:0 auto;padding:0 5vmin 5vmin}
+  /* hero */
+  header.hero{text-align:center;padding:3em 5vmin 1em;max-width:940px;margin:0 auto}
+  .eyebrow{color:var(--red);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.8rem}
+  h1{font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.03;margin:.15em 0 .3em;color:var(--black)}
+  .lede{color:var(--muted);font-size:clamp(1.05rem,2.6vw,1.28rem);max-width:60ch;margin:0 auto}
+  /* intro */
+  .intro{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:10px;padding:20px 24px;margin:2.2em 0}
+  .intro p{margin:.5em 0}
+  section{scroll-margin-top:64px}
+  h2{font-size:1.5rem;color:var(--black);margin:2.2em 0 .15em;display:flex;align-items:baseline;gap:.5em}
+  h2 .n{color:var(--red);font-size:1rem;font-weight:800}
+  .sub{color:var(--muted);margin:0 0 1.1em}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  a.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;text-decoration:none;color:var(--ink);transition:.15s}
+  a.card:hover{border-color:var(--red);box-shadow:0 4px 18px rgba(0,0,0,.07)}
+  a.card b{display:block;color:var(--red);font-size:1.05rem;margin-bottom:.25em}
   a.card span{color:var(--muted);font-size:.92rem}
-  .big{display:block;background:var(--accent);color:#fff;border-radius:16px;padding:22px 26px;text-decoration:none;margin:.4em 0}
-  .big b{font-size:1.25rem;display:block;margin-bottom:.2em}
-  .big span{opacity:.92;font-size:.98rem}
-  .listen{background:var(--chip);border-radius:14px;padding:18px 22px;border:1px dashed var(--line)}
-  .involve li{margin:.4em 0}
-  .foot{margin-top:2.5em;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1.2em}
-  .foot b{color:var(--ink)}
+  a.big{display:block;background:var(--red);color:#fff;border-radius:12px;padding:22px 26px;text-decoration:none}
+  a.big:hover{background:var(--red-dark)}
+  a.big b{font-size:1.25rem;display:block;margin-bottom:.2em;color:#fff}
+  a.big span{opacity:.95;font-size:.98rem}
+  .listen{background:var(--chip);border-radius:12px;padding:18px 22px;border:1px dashed var(--line)}
+  ul.involve{padding-left:0;list-style:none}
+  ul.involve li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:.5em 0}
+  ul.involve b{color:var(--red)}
+  /* sources */
+  .sources{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 24px;font-size:.92rem}
+  .sources h3{margin:.2em 0 .5em;font-size:1rem;color:var(--black)}
+  .sources li{margin:.5em 0;color:var(--ink)}
+  .sources .by{color:var(--muted)}
+  footer{border-top:2px solid var(--red);margin-top:3em;padding:1.4em 5vmin;text-align:center;color:var(--muted);font-size:.85rem;max-width:940px;margin-inline:auto}
 </style>
 </head>
 <body>
-  <header>
-    <div class="kick">College of Social Sciences &amp; Humanities</div>
+  <div class="topbar"><b>Northeastern University</b> &nbsp;·&nbsp; <span class="r">College of Social Sciences &amp; Humanities</span></div>
+
+  <nav>
+    <a href="#toolkit">Toolkit</a>
+    <a href="#examples">In Action</a>
+    <a href="#verify">Verify Work</a>
+    <a href="#listen">Listen</a>
+    <a href="#involved">Get Involved</a>
+    <a href="#sources">Sources</a>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">AI Curricular Transformation Initiative</div>
     <h1>AI in Teaching</h1>
-    <p class="lede">Practical resources to teach <em>with</em> and <em>about</em> AI — keep what makes your teaching yours, and help students become genuinely AI-ready.</p>
+    <p class="lede">Practical, discipline-neutral resources to help CSSH faculty teach <em>with</em> and <em>about</em> AI — keep what makes your teaching yours, and help students become genuinely AI-ready.</p>
   </header>
 
-  <div class="intro">
-    <p><b>AI didn't create a cheating crisis — it exposed how we assess.</b> When a machine can complete a take-home task without learning anything, the task was measuring the product, not the thinking. That's a design problem we know how to solve.</p>
-    <p>And "AI-ready" isn't "can use ChatGPT." It's judgment: knowing when to use these tools, evaluating whether their output is any good, using them ethically, and adding the human value on top. <b>Not every course must use AI</b> — the goal is that every <em>program</em> gives students some exposure. Ring-fencing AI-free courses is fine.</p>
+  <div class="wrap">
+    <div class="intro">
+      <p><b>AI didn't create a cheating crisis — it exposed how we assess.</b> When a machine can complete a take-home task without learning anything, the task was measuring the product, not the thinking. That's a design problem we know how to solve.</p>
+      <p>And "AI-ready" isn't "can use ChatGPT." It's judgment — knowing when to use these tools, evaluating their output, using them ethically, and adding the human value on top. <b>Not every course must use AI:</b> the goal is that every <em>program</em> gives students some exposure. Ring-fencing AI-free courses is entirely fine.</p>
+    </div>
+
+    <section id="toolkit">
+      <h2><span class="n">1</span> Make your assignments AI-resistant</h2>
+      <p class="sub">A self-serve toolkit — diagnose an assignment, then fix it with proven levers, by type. Start with just one.</p>
+      <a class="big" href="assignment-toolkit.html">
+        <b>Open the Assignment Toolkit →</b>
+        <span>Discussion prompts · papers · quantitative · patterns that work. Adaptable to any discipline.</span>
+      </a>
+    </section>
+
+    <section id="examples">
+      <h2><span class="n">2</span> See AI-enhanced teaching in action</h2>
+      <p class="sub">Live, interactive examples you can click through or adapt to your discipline.</p>
+      <div class="cards">
+        <a class="card" href="https://ryanpiao.github.io/econ-lectures/econ2316/ch09-profit-max-supply/#/three-zones"><b>Interactive chart</b><span>A slider students manipulate to watch a model change live.</span></a>
+        <a class="card" href="https://ryanpiao.github.io/econ-lectures/econ1116/ch08-consumer-choice/#/utility-survey"><b>Live class poll</b><span>Real-time data students generate in class — can't be AI-faked.</span></a>
+        <a class="card" href="https://ryanpiao.github.io/econ-lectures/econ2316/ch14-game-theory/#/grade-game"><b>In-class game</b><span>A live prisoner's-dilemma that makes an abstract idea tangible.</span></a>
+        <a class="card" href="artifacts/econ2316-argue-with-ai.html"><b>Argue with the AI</b><span>Students catch the AI's flaw — the core of AI-readiness.</span></a>
+        <a class="card" href="artifacts/blp-onepager.html"><b>The barrier is gone</b><span>How AI made a research-grade method teachable.</span></a>
+        <a class="card" href="demo-live.html"><b>Live-demo page (QR)</b><span>Scan-to-join codes for showing these in a room.</span></a>
+      </div>
+    </section>
+
+    <section id="verify">
+      <h2><span class="n">3</span> Verify authentic work on take-home tasks</h2>
+      <p class="sub">A "no-AI" label isn't enforcement; a short live conversation is.</p>
+      <div class="cards">
+        <a class="card" href="assignment-toolkit.html"><b>The oral / replication interview</b><span>A 10–15 min defense where students explain their choices live — and get real interview practice. See "Patterns that work."</span></a>
+      </div>
+    </section>
+
+    <section id="listen">
+      <h2><span class="n">4</span> Listen: a 10-minute intro</h2>
+      <div class="listen">
+        <b>Audio overview — "AI in Teaching at CSSH."</b>
+        <p style="margin:.4em 0 0;color:var(--muted)">A short, conversational primer on why AI is reshaping teaching and how to engage — good for a commute.
+        <br><em>Link coming soon.</em></p>
+      </div>
+    </section>
+
+    <section id="involved">
+      <h2><span class="n">5</span> Get involved</h2>
+      <ul class="involve">
+        <li><b>Join the faculty cohort</b> — a small group that meets monthly to experiment, share, and get feedback on ideas.</li>
+        <li><b>Come to a workshop</b> — hands-on sessions from "just starting" to "power user."</li>
+        <li><b>Request a consult</b> — help redesigning one specific assignment or rethinking assessment in your course.</li>
+      </ul>
+      <p class="sub">Reach out to your CSSH AI Teaching Innovation &amp; Curricular Transformation Directors.</p>
+    </section>
+
+    <section id="sources">
+      <h2><span class="n">6</span> Sources &amp; credits</h2>
+      <div class="sources">
+        <h3>Grounding documents (Northeastern)</h3>
+        <ul>
+          <li><b>AI Readiness Framework</b> <span class="by">— Northeastern Curricular Transformation Initiative.</span> Defines AI literacy and fluency across four dimensions (Data, Critical Thinking, Ethics, Human-Centered Creativity).</li>
+          <li><b>Assessment in an AI-Enabled World: A Faculty Guide</b> <span class="by">— Northeastern's Task Force on AI and Assessment.</span> Source of the "not a cheating crisis" reframe and several assessment-redesign principles.</li>
+          <li><b>Weaving AI Readiness into the Northeastern Curriculum</b> <span class="by">— the AI Curriculum Working Group.</span> Quick-start framing for AI in the curriculum.</li>
+          <li><b>Standards &amp; Recommendations for the Use of Generative AI in Teaching and Learning</b> <span class="by">— Northeastern.</span> Referenced for example AI-use policy language.</li>
+        </ul>
+        <h3>CSSH-created materials</h3>
+        <ul>
+          <li><b>Discussion Prompt Redesign Checklist</b> (the "four levers") <span class="by">— Linda Kowalcky, CSSH Director of AI Curricular Transformation.</span></li>
+          <li><b>Interactive teaching demos, the AI Lab &amp; the replication interview</b> <span class="by">— Richeng Piao, CSSH Director of AI Teaching Innovation (from his ECON courses).</span></li>
+          <li><b>BLP demonstration</b> <span class="by">— built from the open-source <code>blp-claude-skill</code>.</span></li>
+        </ul>
+        <p class="by" style="margin-top:.8em">Northeastern documents are available through the Curricular Transformation Initiative and CATLR. This page is a working resource maintained by the CSSH CTI Directors — not an official university publication.</p>
+      </div>
+    </section>
   </div>
 
-  <h2>1 · Make your assignments AI-resistant</h2>
-  <p class="sec-sub">A self-serve toolkit — diagnose an assignment, then fix it with proven levers, by type.</p>
-  <a class="big" href="assignment-toolkit.html">
-    <b>Open the Assignment Toolkit →</b>
-    <span>Discussion prompts · papers · quantitative · patterns that work. Adaptable to any discipline.</span>
-  </a>
-
-  <h2>2 · See AI-enhanced teaching in action</h2>
-  <p class="sec-sub">Live, interactive examples you can click through or adapt.</p>
-  <div class="cards">
-    <a class="card" href="https://ryanpiao.github.io/econ-lectures/econ2316/ch09-profit-max-supply/#/three-zones"><b>Interactive chart</b><span>A slider students manipulate to see a model change live.</span></a>
-    <a class="card" href="https://ryanpiao.github.io/econ-lectures/econ1116/ch08-consumer-choice/#/utility-survey"><b>Live class poll</b><span>Real-time data students generate in class — can't be AI-faked.</span></a>
-    <a class="card" href="https://ryanpiao.github.io/econ-lectures/econ2316/ch14-game-theory/#/grade-game"><b>In-class game</b><span>A live prisoner's-dilemma that makes an abstract idea tangible.</span></a>
-    <a class="card" href="artifacts/econ2316-argue-with-ai.html"><b>Argue with the AI</b><span>Students catch the AI's flaw — the core of AI-readiness.</span></a>
-    <a class="card" href="artifacts/blp-onepager.html"><b>The barrier is gone</b><span>How AI made a research-grade method teachable.</span></a>
-    <a class="card" href="demo-live.html"><b>Live-demo page (QR)</b><span>Scan-to-join codes for showing these in a room.</span></a>
-  </div>
-
-  <h2>3 · Verify authentic work on take-home tasks</h2>
-  <p class="sec-sub">A "no-AI" label isn't enforcement; a short live conversation is.</p>
-  <div class="cards">
-    <a class="card" href="assignment-toolkit.html"><b>The oral / replication interview</b><span>A 10–15 min defense where students explain their choices live — and get real interview practice. (See "Patterns that work.")</span></a>
-  </div>
-
-  <h2>4 · Listen: a 10-minute intro</h2>
-  <div class="listen">
-    <b>Audio overview — "AI in Teaching at CSSH."</b>
-    <p style="margin:.4em 0 0;color:var(--muted)">A short, conversational primer on why AI is reshaping teaching and how to engage — good for a commute.
-    <br><em>Link coming — generated via NotebookLM. (Replace this with the share link once created.)</em></p>
-  </div>
-
-  <h2>5 · Get involved</h2>
-  <ul class="involve">
-    <li><b>Join the faculty cohort</b> — a small group that meets monthly to experiment, share, and get feedback.</li>
-    <li><b>Come to a workshop</b> — hands-on sessions from "just starting" to "power user."</li>
-    <li><b>Request a consult</b> — help redesigning one specific assignment or rethinking assessment.</li>
-  </ul>
-  <p class="sec-sub">Reach out to your CSSH AI Teaching Innovation &amp; Curricular Transformation Directors.</p>
-
-  <div class="foot">
-    Grounded in Northeastern's <b>AI Readiness Framework</b> and the <b>"Assessment in an AI-Enabled World"</b> faculty guide. Discussion-prompt levers adapted from <b>Linda Kowalcky's</b> checklist. A CSSH AI Teaching Innovation + Curricular Transformation resource.
-  </div>
+  <footer>
+    A CSSH AI Teaching Innovation &amp; Curricular Transformation resource · Northeastern University
+  </footer>
 </body>
 </html>
