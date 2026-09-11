@@ -1,8 +1,43 @@
-# CSSH AI Teaching — Demo Hub
+# CSSH AI in Teaching — Resource Hub
 
-A single place for the "AI in Teaching" demo. Open `index.html` (or the deployed page) to show:
-- **Live interactives** with QR codes so the audience joins on their phones (chart, utility poll, prisoner's-dilemma game)
-- **The barrier is gone** — BLP made teachable
-- **Argue With the AI** — the student-AI-readiness example
+Live site: **https://ryanpiao.github.io/cssh-ai-demo/**
 
-Interactive pages are served from the public `econ-lectures` repo; QR codes point there.
+A faculty-facing resource hub for the CSSH AI Curricular Transformation Initiative.
+
+## Pages
+| File | What it is |
+|---|---|
+| `index.html` | The hub (intro, toolkit, featured examples, verify, listen, get involved, sources) |
+| `assignment-toolkit.html` | Self-serve toolkit — make assignments AI-resistant, by type |
+| `examples.html` | Filterable gallery of all interactive examples |
+| `demo-live.html` | Live-session page — auto-generates scan-to-join QR codes |
+| `styles.css` | Shared Northeastern-style design system (edit once, all pages update) |
+| `examples.json` | **The one file you edit to add examples** |
+
+## ➕ How to add a new example (the easy way)
+
+Everything on the Examples gallery, the hub's "in action" row, and the live-demo QR page is generated from **one file: `examples.json`.** To add an example, append an object:
+
+```json
+{
+  "title": "Short name",
+  "blurb": "One sentence on what it is / why it's AI-aware.",
+  "url": "https://... (or a relative path like artifacts/my-demo.html)",
+  "discipline": "Economics",
+  "type": "Interactive tool",
+  "featured": true
+}
+```
+
+`type` = Interactive tool | Live activity | Assessment redesign | Concept.
+`featured: true` also shows it on the hub home page.
+
+That's it. The gallery re-renders, the filter buttons rebuild themselves from the data, and if `type` is **Interactive tool** or **Live activity** it also appears as a scan-to-join QR on `demo-live.html`. No HTML editing.
+
+- **New self-contained demo page?** Drop the HTML in `artifacts/` and point `url` at it.
+- **New discipline or type?** Just use it in an entry — the filters build from the data.
+
+## Notes
+- Interactive pages (charts/polls/games) live in the separate public `econ-lectures` repo; examples just link to them.
+- Design changes go in `styles.css` only.
+- QR for the hub itself is `qr/hub.svg`.

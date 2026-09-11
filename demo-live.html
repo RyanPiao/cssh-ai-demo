@@ -3,98 +3,63 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI in Teaching — Demo Hub</title>
+<title>Live Demo · AI in Teaching · CSSH</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-  :root{
-    --bg:#faf7f2; --surface:#fffdf9; --ink:#2b2622; --muted:#6b6157;
-    --accent:#b23a2e; --accent2:#2f6f5e; --line:#e6ddd0;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#1a1714; --surface:#221e19; --ink:#f0e9df; --muted:#a79a8a;
-      --accent:#e0745f; --accent2:#6fbfa6; --line:#372f27;
-    }
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    padding:5vmin;max-width:1100px;margin-inline:auto}
-  header{text-align:center;margin-bottom:2.4em}
-  .kick{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem}
-  h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.05;margin:.2em 0 .15em}
-  .sub{color:var(--muted);font-size:clamp(1rem,2.4vw,1.2rem)}
-  h2.section{font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent2);
-    border-bottom:1px solid var(--line);padding-bottom:.5em;margin:2.4em 0 1.2em}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media(max-width:820px){.grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;
-    padding:20px;text-align:center;display:flex;flex-direction:column;align-items:center}
-  .join{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700;margin-bottom:.2em}
-  .card h3{margin:.1em 0 .1em;font-size:1.15rem}
-  .card .tag{color:var(--muted);font-size:.85rem;margin-bottom:.9em}
-  .qr{background:#fff;border-radius:12px;padding:12px;width:100%;max-width:220px;aspect-ratio:1;
-    display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
-  .qr img{width:100%;height:100%}
-  .card a.link{margin-top:.9em;font-size:.82rem;color:var(--accent2);text-decoration:none;word-break:break-all}
-  .card a.link:hover{text-decoration:underline}
-  .flat{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  @media(max-width:560px){.flat{grid-template-columns:1fr}}
-  .flat a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;
-    padding:18px 20px;text-decoration:none;color:var(--ink)}
-  .flat a:hover{border-color:var(--accent2)}
-  .flat b{color:var(--accent);display:block;margin-bottom:.2em}
-  .flat span{color:var(--muted);font-size:.92rem}
-  footer{margin-top:3em;text-align:center;color:var(--muted);font-size:.85rem}
+  .qrgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:1em}
+  .qrcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .qrcard .join{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--red);font-weight:700}
+  .qrcard h3{margin:.15em 0 .1em;font-size:1.1rem;color:var(--ink)}
+  .qrcard .tag{color:var(--muted);font-size:.82rem;margin-bottom:.9em}
+  .qrcard .qbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;width:190px;height:190px;display:flex;align-items:center;justify-content:center}
+  .qrcard .qbox img,.qrcard .qbox canvas{width:100%!important;height:100%!important}
+  .qrcard a.link{margin-top:.8em;font-size:.82rem;color:var(--accent2);text-decoration:none;word-break:break-all}
 </style>
 </head>
 <body>
-  <header>
-    <div class="kick">CSSH AI Teaching Innovation</div>
-    <h1>AI in Teaching — Live Demo</h1>
-    <div class="sub">Scan a code to join the interactive on your phone. The point isn't the tools —
-      it's what they make possible for students.</div>
+  <div class="topbar"><b>Northeastern University</b> &nbsp;·&nbsp; <span class="r">College of Social Sciences &amp; Humanities</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="assignment-toolkit.html">Toolkit</a>
+    <a href="examples.html">Examples</a>
+    <a href="index.html#involved">Get Involved</a>
+    <a href="index.html#sources">Sources</a>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Live session</div>
+    <h1>Join the demo</h1>
+    <p class="lede">Scan a code to open the interactive on your phone and join in real time. The point isn't the tools — it's what they make possible for students.</p>
   </header>
 
-  <h2 class="section">Join live — scan to participate</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="join">Scan to open</div>
-      <h3>Three Price Zones</h3>
-      <div class="tag">ECON 2316 · interactive chart</div>
-      <div class="qr"><img src="qr/chart.svg" alt="QR: three price zones chart"></div>
-      <a class="link" href="https://ryanpiao.github.io/econ-lectures/econ2316/ch09-profit-max-supply/#/three-zones">open →</a>
-    </div>
-    <div class="card">
-      <div class="join">Scan to vote</div>
-      <h3>Utility Poll</h3>
-      <div class="tag">ECON 1116 · live class poll</div>
-      <div class="qr"><img src="qr/poll.svg" alt="QR: utility poll"></div>
-      <a class="link" href="https://ryanpiao.github.io/econ-lectures/econ1116/ch08-consumer-choice/#/utility-survey">open →</a>
-    </div>
-    <div class="card">
-      <div class="join">Scan to play</div>
-      <h3>Prisoner's Dilemma</h3>
-      <div class="tag">ECON 2316 · live game</div>
-      <div class="qr"><img src="qr/game.svg" alt="QR: prisoner's dilemma game"></div>
-      <a class="link" href="https://ryanpiao.github.io/econ-lectures/econ2316/ch14-game-theory/#/grade-game">open →</a>
-    </div>
+  <div class="wrap">
+    <div class="qrgrid" id="grid"></div>
+    <p id="msg" class="sub" style="text-align:center" hidden></p>
   </div>
 
-  <h2 class="section">The bigger picture</h2>
-  <div class="flat">
-    <a href="artifacts/blp-onepager.html">
-      <b>The barrier is gone</b>
-      <span>How AI made a research-grade method (BLP) teachable in a class.</span>
-    </a>
-    <a href="artifacts/econ2316-argue-with-ai.html">
-      <b>Argue With the AI</b>
-      <span>Students catch the AI's flaw — the core of making them AI-ready.</span>
-    </a>
-  </div>
+  <footer>A CSSH AI Teaching Innovation &amp; Curricular Transformation resource · Northeastern University</footer>
 
-  <footer>
-    Full slide hub → <a href="https://ryanpiao.github.io/econ-lectures/" style="color:var(--accent2)">ryanpiao.github.io/econ-lectures</a>
-  </footer>
+<script>
+  const VERBS = {"Live activity":"Scan to join","Interactive tool":"Scan to open"};
+  fetch("examples.json").then(r=>r.json()).then(data=>{
+    const live = data.filter(x=>x.type==="Live activity"||x.type==="Interactive tool");
+    const grid=document.getElementById("grid");
+    if(!live.length){ show("No live examples yet."); return; }
+    live.forEach(x=>{
+      const card=document.createElement("div");
+      card.className="qrcard";
+      card.innerHTML=`<div class="join">${VERBS[x.type]||"Scan"}</div>
+        <h3>${x.title}</h3><div class="tag">${x.discipline}</div>
+        <div class="qbox"></div>
+        <a class="link" href="${x.url}">open →</a>`;
+      grid.appendChild(card);
+      const box=card.querySelector(".qbox");
+      if(window.QRCode){ new QRCode(box,{text:x.url,width:180,height:180,correctLevel:QRCode.CorrectLevel.M}); }
+      else { box.innerHTML='<span style="font-size:.8rem;color:#888">QR needs internet</span>'; }
+    });
+  }).catch(()=>show("Could not load examples. This page needs the live site (not a local file)."));
+  function show(t){const m=document.getElementById("msg");m.hidden=false;m.textContent=t;}
+</script>
 </body>
 </html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Examples · AI in Teaching · CSSH</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar"><b>Northeastern University</b> &nbsp;·&nbsp; <span class="r">College of Social Sciences &amp; Humanities</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="assignment-toolkit.html">Toolkit</a>
+    <a href="examples.html" class="active">Examples</a>
+    <a href="index.html#involved">Get Involved</a>
+    <a href="index.html#sources">Sources</a>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Gallery</div>
+    <h1>Examples in action</h1>
+    <p class="lede">Real, interactive examples of AI-aware teaching across disciplines. Filter to find what fits your course, then click through or adapt.</p>
+  </header>
+
+  <div class="wrap">
+    <div class="filters" id="disc"><span class="filter-label">Discipline</span></div>
+    <div class="filters" id="type"><span class="filter-label">Type</span></div>
+    <div class="cards" id="grid"></div>
+    <p id="empty" class="sub" hidden>No examples match those filters yet.</p>
+  </div>
+
+  <footer>A CSSH AI Teaching Innovation &amp; Curricular Transformation resource · Northeastern University</footer>
+
+<script>
+let ALL = [];
+let fDisc = "All", fType = "All";
+
+function chips(containerId, values, current, onPick){
+  const c = document.getElementById(containerId);
+  ["All", ...values].forEach(v=>{
+    const b=document.createElement("button");
+    b.textContent=v; b.setAttribute("aria-pressed", v===current);
+    b.onclick=()=>onPick(v);
+    c.appendChild(b);
+  });
+}
+
+function render(){
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
+  const items=ALL.filter(x=>(fDisc==="All"||x.discipline===fDisc)&&(fType==="All"||x.type===fType));
+  document.getElementById("empty").hidden = items.length>0;
+  items.forEach(x=>{
+    const a=document.createElement("a");
+    a.className="card"; a.href=x.url;
+    a.innerHTML=`<b>${x.title}</b><span>${x.blurb}</span>
+      <div class="meta"><em>${x.discipline}</em><em>${x.type}</em></div>`;
+    grid.appendChild(a);
+  });
+  // refresh pressed states
+  document.querySelectorAll("#disc button").forEach(b=>b.setAttribute("aria-pressed", b.textContent===fDisc));
+  document.querySelectorAll("#type button").forEach(b=>b.setAttribute("aria-pressed", b.textContent===fType));
+}
+
+fetch("examples.json")
+  .then(r=>r.json())
+  .then(data=>{
+    ALL=data;
+    const discs=[...new Set(data.map(x=>x.discipline))].sort();
+    const types=[...new Set(data.map(x=>x.type))].sort();
+    chips("disc", discs, fDisc, v=>{fDisc=v; render();});
+    chips("type", types, fType, v=>{fType=v; render();});
+    render();
+  })
+  .catch(()=>{
+    document.getElementById("grid").innerHTML =
+      '<p class="sub">Could not load examples. (This page needs to run from the live site, not a local file.)</p>';
+  });
+</script>
+</body>
+</html>

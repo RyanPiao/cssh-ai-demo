@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Interactive chart",
+    "blurb": "A slider students manipulate to watch a model change live.",
+    "url": "https://ryanpiao.github.io/econ-lectures/econ2316/ch09-profit-max-supply/#/three-zones",
+    "discipline": "Economics",
+    "type": "Interactive tool",
+    "featured": true
+  },
+  {
+    "title": "Live class poll",
+    "blurb": "Real-time data students generate in class — can't be AI-faked.",
+    "url": "https://ryanpiao.github.io/econ-lectures/econ1116/ch08-consumer-choice/#/utility-survey",
+    "discipline": "Economics",
+    "type": "Live activity",
+    "featured": true
+  },
+  {
+    "title": "In-class game",
+    "blurb": "A live prisoner's-dilemma that makes an abstract idea tangible.",
+    "url": "https://ryanpiao.github.io/econ-lectures/econ2316/ch14-game-theory/#/grade-game",
+    "discipline": "Economics",
+    "type": "Live activity",
+    "featured": true
+  },
+  {
+    "title": "Argue with the AI",
+    "blurb": "Students critique an AI defending a subtly-wrong claim and catch the flaw.",
+    "url": "artifacts/econ2316-argue-with-ai.html",
+    "discipline": "Any discipline",
+    "type": "Assessment redesign",
+    "featured": true
+  },
+  {
+    "title": "The barrier is gone (BLP)",
+    "blurb": "How AI made a research-grade method teachable in a class.",
+    "url": "artifacts/blp-onepager.html",
+    "discipline": "Economics",
+    "type": "Concept",
+    "featured": false
+  }
+]
