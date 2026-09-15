@@ -1,5 +1,23 @@
 [
   {
+    "title": "Redesigned discussion prompts",
+    "blurb": "Three weeks of graduate public policy discussion prompts rewritten with the Four Levers, with a before/after for each change.",
+    "url": "artifacts/public-policy-discussion-prompts.html",
+    "discipline": "Public Policy",
+    "type": "Assessment redesign",
+    "format": "Web page",
+    "featured": true
+  },
+  {
+    "title": "Discussion Prompt Redesign Checklist",
+    "blurb": "A printable diagnose-and-redesign worksheet you can use on any discussion prompt in any course.",
+    "url": "artifacts/discussion-prompt-checklist.html",
+    "discipline": "Any discipline",
+    "type": "Template",
+    "format": "Web page",
+    "featured": true
+  },
+  {
     "title": "Argue with the AI",
     "blurb": "Students critique an AI defending a subtly wrong claim and find the flaw. Built for economics; the structure works in any discipline.",
     "url": "artifacts/econ2316-argue-with-ai.html",
@@ -24,7 +42,7 @@
     "discipline": "Economics",
     "type": "Live activity",
     "format": "Slide deck",
-    "featured": true
+    "featured": false
   },
   {
     "title": "Interactive chart",

@@ -35,7 +35,7 @@ Everything on the Examples gallery, the hub's "in action" row, and the live-demo
 }
 ```
 
-`type` = Interactive tool | Live activity | Assessment redesign | Concept.
+`type` = Interactive tool | Live activity | Assessment redesign | Template | Concept.
 `format` (optional) = what the link opens, e.g. Slide deck | Web page | PDF.
 `featured: true` also shows it on the Start here page.
 
