@@ -4,105 +4,182 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Assignment Toolkit · AI in Teaching · CSSH</title>
+<meta name="description" content="Check whether an assignment is AI-vulnerable, make it more AI-resilient by type, build AI in deliberately, and check for authentic work.">
+<meta property="og:title" content="Assignment Toolkit · AI in Teaching · CSSH">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="topbar"><b>Northeastern University</b> &nbsp;·&nbsp; <span class="r">College of Social Sciences &amp; Humanities</span></div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="assignment-toolkit.html" class="active">Toolkit</a>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="topbar"><span><b>CSSH</b> · AI Teaching Innovation</span><span class="note">A working faculty resource, not an official Northeastern publication</span></div>
+  <nav aria-label="Main">
+    <a href="index.html">Start here</a>
+    <a href="policies.html">Policies &amp; syllabus</a>
+    <a href="assignment-toolkit.html" aria-current="page">Assignment toolkit</a>
     <a href="examples.html">Examples</a>
-    <a href="index.html#involved">Get Involved</a>
-    <a href="index.html#sources">Sources</a>
+    <a href="get-help.html">Get help</a>
   </nav>
 
+  <main id="main">
   <header class="hero">
-    <div class="eyebrow">Self-serve resource</div>
+    <div class="eyebrow">Self-serve toolkit</div>
     <h1>Assignment Toolkit</h1>
-    <p class="lede">Make an assignment AI-resistant while keeping your learning goals. Pick your assignment type — you don't need every fix; one or two meaningfully reduces vulnerability.</p>
+    <p class="lede">Make an assignment more AI-resilient, or build AI in on purpose, while keeping your learning goals. You don't need every idea here; one or two changes can make a real difference.</p>
   </header>
 
   <div class="wrap">
-    <div class="tabs" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-p="start">Start here</button>
-      <button class="tab" role="tab" aria-selected="false" data-p="disc">Discussion prompts</button>
-      <button class="tab" role="tab" aria-selected="false" data-p="paper">Papers &amp; essays</button>
-      <button class="tab" role="tab" aria-selected="false" data-p="quant">Quantitative / data</button>
-      <button class="tab" role="tab" aria-selected="false" data-p="any">Any assignment</button>
-      <button class="tab" role="tab" aria-selected="false" data-p="practice">Patterns that work</button>
+    <div class="tabs" role="tablist" aria-label="Toolkit sections">
+      <button class="tab" role="tab" id="tab-start" aria-controls="start" data-p="start">Start here</button>
+      <button class="tab" role="tab" id="tab-disc" aria-controls="disc" data-p="disc">Discussion prompts</button>
+      <button class="tab" role="tab" id="tab-paper" aria-controls="paper" data-p="paper">Papers &amp; essays</button>
+      <button class="tab" role="tab" id="tab-quant" aria-controls="quant" data-p="quant">Quantitative / data</button>
+      <button class="tab" role="tab" id="tab-any" aria-controls="any" data-p="any">Any assignment</button>
+      <button class="tab" role="tab" id="tab-integrate" aria-controls="integrate" data-p="integrate">Build AI in</button>
+      <button class="tab" role="tab" id="tab-verify" aria-controls="verify" data-p="verify">Check authentic work</button>
     </div>
 
-    <div class="panel" data-active="true" id="start">
+    <div class="panel" role="tabpanel" id="start" aria-labelledby="tab-start" tabindex="0">
       <h2>Is this assignment AI-vulnerable?</h2>
-      <div class="who">30-second diagnosis</div>
-      <ul class="diag">
-        <li>Could a generic AI tool answer it well <b>without doing the reading?</b></li>
-        <li>Could a student answer from <b>general/news knowledge</b> instead of the specific material?</li>
-        <li>Does it only ask <b>“what do you think / what resonates?”</b></li>
-      </ul>
-      <p>If <b>yes</b> to any, pick your assignment type above for concrete fixes.</p>
+      <div class="who">A quick check</div>
+      <ol class="diag">
+        <li><b>Test it.</b> Paste your assignment prompt into the <a href="https://claude.northeastern.edu/">NU Claude Portal</a>. Would the answer earn a passing grade?</li>
+        <li>Could a student answer well <b>without doing the reading</b>, or from general knowledge instead of your course material?</li>
+        <li>Does the prompt only ask <b>“what do you think?”</b> or <b>“what resonates with you?”</b></li>
+      </ol>
+      <p>If the answer to any of these is yes, pick your assignment type in the tabs above for concrete changes.</p>
+      <p><b>Before redesigning, decide your AI level.</b> Is AI prohibited, permitted, encouraged, or required on this task? See <a href="policies.html#labels">assignment labels</a>. If it's encouraged or required, go to <button type="button" class="linklike" data-go="integrate">Build AI in</button>.</p>
     </div>
 
-    <div class="panel" id="disc">
+    <div class="panel" role="tabpanel" id="disc" aria-labelledby="tab-disc" tabindex="0" hidden>
       <h2>Discussion prompts &amp; qualitative work</h2>
-      <div class="who">The Four Levers — from Linda Kowalcky's checklist</div>
-      <div class="lever"><b>1 · Anchor</b> to something AI can't know — a personal/local/specific referent (a real policy, event, dataset).<div class="ex">“Name a real policy in your life; apply the principle to it.”</div></div>
-      <div class="lever"><b>2 · Trace the “why”</b>, not the “what” — require the mechanism, not a summary.<div class="ex">“Pick one design element; explain why <em>that</em> one had to change.”</div></div>
-      <div class="lever"><b>3 · Build in peer dependency</b> — the follow-up needs classmates' specific input.<div class="ex">“Compare examples across your group; report the best pair.”</div></div>
-      <div class="lever"><b>4 · Require a textual reference</b> — a page number / quoted term in the pre-discussion post.</div>
+      <div class="who">The Four Levers, from Linda Kowalcky's Discussion Prompt Redesign Checklist</div>
+      <div class="lever"><b>1 · Anchor</b> to something specific: a local policy, a campus event, a dataset, or a class discussion.<div class="ex">“Pick a real policy that affects your community and apply this week's principle to it.” Give students a non-personal option if the anchor involves their own life.</div></div>
+      <div class="lever"><b>2 · Trace the “why”</b>, not the “what.” Ask for the reasoning, not a summary.<div class="ex">“Pick one design element; explain why <em>that</em> one had to change.”</div></div>
+      <div class="lever"><b>3 · Build in peer dependency.</b> The follow-up needs classmates' specific posts.<div class="ex">“Compare examples across your group; report the strongest pair and why.”</div></div>
+      <div class="lever"><b>4 · Require a textual reference</b>: a quoted passage or term from the reading in the pre-discussion post.</div>
     </div>
 
-    <div class="panel" id="paper">
+    <div class="panel" role="tabpanel" id="paper" aria-labelledby="tab-paper" tabindex="0" hidden>
       <h2>Papers &amp; essays</h2>
-      <div class="who">Built for non-writing courses with no in-class draft time</div>
-      <div class="lever"><b>Anchor to the text + your framing</b> — require named passages (page numbers) <em>and</em> a concept from your own lectures. AI can't know how you framed it.</div>
-      <div class="lever"><b>Add a light process memo</b> (½–1 pg) — thesis, what changed as you read, the turning-point passage. Quick to skim, hard to fake.</div>
-      <div class="lever"><b>Add an oral beat</b> — a 3–5 min “walk me through your argument” (office hours, class slot, or 2-min video).</div>
-      <div class="lever"><b>AI-as-source-to-critique</b> — students run their prompt through AI, then critique what it got wrong about the specific text.</div>
+      <div class="who">Works even without in-class drafting time</div>
+      <div class="lever"><b>Connect the text to class discussion</b>: require named passages <em>and</em> a point raised in your class sessions. Class discussion is harder to reproduce than the reading itself.</div>
+      <div class="lever"><b>Add a short process memo</b> (½–1 page): the thesis, what changed as they read, the turning-point passage. Quick to skim, and it rewards genuine engagement.</div>
+      <div class="lever"><b>Add a brief oral check-in</b>: a 3–5 minute “walk me through your argument” in office hours, a class slot, or a 2-minute video.</div>
+      <div class="lever"><b>Grade drafts and revision</b>: a draft, feedback, and a note on how the student used the feedback.</div>
     </div>
 
-    <div class="panel" id="quant">
+    <div class="panel" role="tabpanel" id="quant" aria-labelledby="tab-quant" tabindex="0" hidden>
       <h2>Quantitative / data assignments</h2>
-      <div class="who">Grade thinking, not output</div>
-      <div class="lever"><b>Grade interpretation</b> — AI can produce the regression; require interpreting, critiquing, and justifying specification choices.</div>
-      <div class="lever"><b>Anchor to a chosen dataset/case</b> + a decision log (“why this method, why this variable”).</div>
-      <div class="lever"><b>Argue with the AI</b> — students find the model's errors or bad assumptions.</div>
-      <div class="lever"><b>Verify live</b> — a short in-class replication or explain-your-code moment.</div>
+      <div class="who">Grade the thinking, not just the output</div>
+      <div class="lever"><b>Grade interpretation</b>: AI can run the regression; students must interpret it, critique it, and justify their choices.</div>
+      <div class="lever"><b>Anchor to a chosen dataset or case</b>, plus a decision log (“why this method, why this variable”).</div>
+      <div class="lever"><b>Check live</b>: a short in-class replication, or a moment where students explain their code.</div>
     </div>
 
-    <div class="panel" id="any">
+    <div class="panel" role="tabpanel" id="any" aria-labelledby="tab-any" tabindex="0" hidden>
       <h2>Moves that work on any assignment</h2>
-      <div class="lever"><b>Separate practice from assessment</b> — practice low-stakes; put high stakes where you can verify (in-class, oral, proctored).</div>
-      <div class="lever"><b>Grade process + product</b> — drafts, reflections, version history, checkpoints.</div>
-      <div class="lever"><b>Protect the early, generative stage</b> — first independent thinking before AI enters.</div>
-      <div class="lever"><b>Make AI expectations explicit — and explain <em>why</em></b> — what skill the task builds, why the shortcut bypasses it.</div>
+      <div class="lever"><b>Separate practice from assessment</b>: keep practice low-stakes, and put high stakes where you can see the work (in class, oral, or proctored).</div>
+      <div class="lever"><b>Grade process as well as product</b>: drafts, reflections, version history, checkpoints.</div>
+      <div class="lever"><b>Protect the early thinking</b>: students do their first independent thinking before AI enters.</div>
+      <div class="lever"><b>Say what's expected, and why</b>: name the skill the task builds and why the shortcut skips it.</div>
+      <div class="lever"><b>Mix individual and team work</b>: individual work first, then a team stage that builds on it.</div>
     </div>
 
-    <div class="panel" id="practice">
-      <h2>Patterns that work</h2>
-      <div class="who">Field-tested structures you can adapt to any discipline</div>
-      <div class="lever"><b>Manual-first, then AI</b> — students do the core by hand first, and AI unlocks only after, with their use documented: <em>what did you ask, and how did you verify it?</em></div>
-      <div class="lever"><b>Anchor the grade to something you can see</b> — pair take-home work with a proctored quiz or a short in-class checkpoint.</div>
-      <div class="lever"><b>Authentic project + short oral defense</b> — a real-data or replication project the student must defend live.</div>
-      <div class="lever"><b>The oral / replication interview</b> — a 10–15 min conversation where the student explains choices in real time. Verifies authorship; doubles as interview practice.</div>
-      <div class="lever"><b>Argue with the AI</b> — students critique AI output that's subtly wrong and catch the flaw.</div>
-      <div class="lever"><b>Live in-class activities</b> — polls, simulations, games: content that only exists after class meets can't be AI-faked.</div>
+    <div class="panel" role="tabpanel" id="integrate" aria-labelledby="tab-integrate" tabindex="0" hidden>
+      <h2>Build AI in on purpose</h2>
+      <div class="who">For assignments labeled Permitted, Encouraged, or Required. The university standards recommend that any AI-integrated task include verification and critique.</div>
+
+      <div class="lever"><b>Critique the AI</b>: students ask an AI tool a question about your course material, then find what it got wrong, missed, or oversimplified.
+        <dl><dt>Goal</dt><dd>Close reading, and seeing AI's limits firsthand</dd>
+        <dt>Students submit</dt><dd>The AI's answer, annotated, plus a short corrected version citing the source</dd>
+        <dt>Grade on</dt><dd>Accuracy of the critique and use of evidence, not the AI's answer</dd>
+        <dt>Example</dt><dd><a href="artifacts/econ2316-argue-with-ai.html">Argue with the AI</a> (economics, adaptable)</dd></dl>
+      </div>
+
+      <div class="lever"><b>Do it yourself first, then with AI</b>: students complete the core task on their own, then use AI and compare.
+        <dl><dt>Goal</dt><dd>Build the foundational skill, then learn when a tool helps</dd>
+        <dt>Students submit</dt><dd>Their own version, the AI-assisted version, and a reflection on the differences</dd>
+        <dt>Grade on</dt><dd>The first version and the quality of the comparison</dd></dl>
+      </div>
+
+      <div class="lever"><b>Compare and test</b>: students give the same prompt to two tools, or rephrase it, and evaluate the results.
+        <dl><dt>Goal</dt><dd>Understand how AI output varies and what makes it trustworthy</dd>
+        <dt>Students submit</dt><dd>Outputs side by side, with checks against course sources</dd>
+        <dt>Grade on</dt><dd>The criteria students use to judge quality</dd></dl>
+      </div>
+
+      <div class="lever"><b>Document the process</b>: students keep their prompts or chat transcripts and an AI journal.
+        <dl><dt>Goal</dt><dd>Transparency and reflection on appropriate use</dd>
+        <dt>Students submit</dt><dd>A <a href="policies.html#disclosure">disclosure statement</a> or transcript with the assignment</dd>
+        <dt>Grade on</dt><dd>Completeness and honesty of the reflection</dd></dl>
+      </div>
+      <p class="source">Have students use university-supported tools such as the <a href="https://claude.northeastern.edu/">NU Claude Portal</a> so no one needs a paid account.</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="verify" aria-labelledby="tab-verify" tabindex="0" hidden>
+      <h2>Check for authentic work</h2>
+      <div class="who">Designs that make students' own understanding visible, without AI detectors</div>
+      <div class="lever"><b>Short oral conversation</b>: a 5–15 minute talk where students explain their choices. It shows understanding and doubles as interview practice. In large classes, meet with a random sample or run small groups.</div>
+      <div class="lever"><b>Anchor part of the grade to something you can see</b>: pair take-home work with a short in-class checkpoint or quiz.</div>
+      <div class="lever"><b>Project plus a brief defense</b>: a real-data, archival, or replication project that students present and answer questions on.</div>
+      <div class="lever"><b>Live in-class activities</b>: polls, simulations, and games that produce class-generated material students then build on.</div>
+      <div class="callout">
+        <h3>Keep it fair</h3>
+        <ul>
+          <li>Offer alternatives for students with accommodations (for example, a written reflection instead of a live oral), and coordinate with Disability Access Services when needed.</li>
+          <li>Frame oral check-ins as a normal part of the course for everyone, not an accusation.</li>
+          <li>If you suspect misuse, the university asks you to start by asking the student to explain their process. See the <a href="policies.html#rules">rules</a>.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="adapt" style="margin-top:20px">
-      <b>Grounded in</b> Northeastern's AI Readiness Framework and the “Assessment in an AI-Enabled World” faculty guide. Discussion-prompt levers adapted from Linda Kowalcky's checklist.
+      <b>Grounded in</b> Northeastern's AI Readiness Framework, the <em>Assessment in an AI-Enabled World</em> faculty guide, and the university's <a href="policies.html">AI standards</a>. Discussion-prompt levers adapted from Linda Kowalcky's checklist. Want help applying these to your course? <a href="get-help.html#consult">Request a consult</a>.
     </div>
   </div>
+  </main>
 
-  <footer>A CSSH AI Teaching Innovation &amp; Curricular Transformation resource · Northeastern University</footer>
+  <footer><a href="about.html">About &amp; sources</a> · Maintained by CSSH's Directors of AI Teaching Innovation and AI Curricular Transformation · Not an official Northeastern University publication</footer>
 
 <script>
   const tabs=[...document.querySelectorAll('.tab')];
   const panels=[...document.querySelectorAll('.panel')];
-  tabs.forEach(t=>t.addEventListener('click',()=>{
-    tabs.forEach(x=>x.setAttribute('aria-selected', x===t));
-    panels.forEach(p=>p.setAttribute('data-active', p.id===t.dataset.p));
+  const ALIASES={practice:'verify'};   // old link targets
+
+  function show(id, focus){
+    id=ALIASES[id]||id;
+    if(!panels.some(p=>p.id===id)) id='start';
+    tabs.forEach(t=>{
+      const on=t.dataset.p===id;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex=on?0:-1;
+      if(on&&focus) t.focus();
+    });
+    panels.forEach(p=>p.hidden = p.id!==id);
+    if(location.hash.slice(1)!==id) history.replaceState(null,'','#'+id);
+  }
+
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>show(t.dataset.p));
+    t.addEventListener('keydown',e=>{
+      let j=null;
+      if(e.key==='ArrowRight') j=(i+1)%tabs.length;
+      else if(e.key==='ArrowLeft') j=(i-1+tabs.length)%tabs.length;
+      else if(e.key==='Home') j=0;
+      else if(e.key==='End') j=tabs.length-1;
+      if(j!==null){ e.preventDefault(); show(tabs[j].dataset.p,true); }
+    });
+  });
+  document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{
+    show(b.dataset.go);
+    document.querySelector('.tabs').scrollIntoView({block:'start'});
   }));
+  window.addEventListener('hashchange',()=>show(location.hash.slice(1)));
+
+  const initial=location.hash.slice(1);
+  show(initial||'start');
+  if(initial) document.querySelector('.tabs').scrollIntoView({block:'start'});
 </script>
 </body>
 </html>

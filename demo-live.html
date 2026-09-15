@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Live Demo · AI in Teaching · CSSH</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
@@ -18,15 +19,17 @@
 </style>
 </head>
 <body>
-  <div class="topbar"><b>Northeastern University</b> &nbsp;·&nbsp; <span class="r">College of Social Sciences &amp; Humanities</span></div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="assignment-toolkit.html">Toolkit</a>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="topbar"><span><b>CSSH</b> · AI Teaching Innovation</span><span class="note">A working faculty resource, not an official Northeastern publication</span></div>
+  <nav aria-label="Main">
+    <a href="index.html">Start here</a>
+    <a href="policies.html">Policies &amp; syllabus</a>
+    <a href="assignment-toolkit.html">Assignment toolkit</a>
     <a href="examples.html">Examples</a>
-    <a href="index.html#involved">Get Involved</a>
-    <a href="index.html#sources">Sources</a>
+    <a href="get-help.html">Get help</a>
   </nav>
 
+  <main id="main">
   <header class="hero">
     <div class="eyebrow">Live session</div>
     <h1>Join the demo</h1>
@@ -37,8 +40,9 @@
     <div class="qrgrid" id="grid"></div>
     <p id="msg" class="sub" style="text-align:center" hidden></p>
   </div>
+  </main>
 
-  <footer>A CSSH AI Teaching Innovation &amp; Curricular Transformation resource · Northeastern University</footer>
+  <footer><a href="about.html">About &amp; sources</a> · Maintained by CSSH's Directors of AI Teaching Innovation and AI Curricular Transformation · Not an official Northeastern University publication</footer>
 
 <script>
   const VERBS = {"Live activity":"Scan to join","Interactive tool":"Scan to open"};

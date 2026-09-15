@@ -4,32 +4,49 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Examples · AI in Teaching · CSSH</title>
+<meta name="description" content="Interactive activities and assignment redesigns from CSSH courses that you can click through or adapt.">
+<meta property="og:title" content="Examples · AI in Teaching · CSSH">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="topbar"><b>Northeastern University</b> &nbsp;·&nbsp; <span class="r">College of Social Sciences &amp; Humanities</span></div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="assignment-toolkit.html">Toolkit</a>
-    <a href="examples.html" class="active">Examples</a>
-    <a href="index.html#involved">Get Involved</a>
-    <a href="index.html#sources">Sources</a>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="topbar"><span><b>CSSH</b> · AI Teaching Innovation</span><span class="note">A working faculty resource, not an official Northeastern publication</span></div>
+  <nav aria-label="Main">
+    <a href="index.html">Start here</a>
+    <a href="policies.html">Policies &amp; syllabus</a>
+    <a href="assignment-toolkit.html">Assignment toolkit</a>
+    <a href="examples.html" aria-current="page">Examples</a>
+    <a href="get-help.html">Get help</a>
   </nav>
 
+  <main id="main">
   <header class="hero">
-    <div class="eyebrow">Gallery</div>
-    <h1>Examples in action</h1>
-    <p class="lede">Real, interactive examples of AI-aware teaching across disciplines. Filter to find what fits your course, then click through or adapt.</p>
+    <div class="eyebrow">Examples</div>
+    <h1>See it in action</h1>
+    <p class="lede">Activities and assignment redesigns you can click through or adapt. This is a starter set, mostly from economics so far. We're adding examples from across CSSH through the year.</p>
   </header>
 
   <div class="wrap">
-    <div class="filters" id="disc"><span class="filter-label">Discipline</span></div>
-    <div class="filters" id="type"><span class="filter-label">Type</span></div>
-    <div class="cards" id="grid"></div>
-    <p id="empty" class="sub" hidden>No examples match those filters yet.</p>
-  </div>
+    <div class="filters" id="disc" role="group" aria-labelledby="disc-l"><span class="filter-label" id="disc-l">Discipline</span></div>
+    <div class="filters" id="type" role="group" aria-labelledby="type-l"><span class="filter-label" id="type-l">Type</span></div>
+    <p id="count" class="sub" aria-live="polite"></p>
+    <div class="cards" id="grid">
+      <noscript>
+        <a class="card" href="artifacts/econ2316-argue-with-ai.html"><h3>Argue with the AI</h3><span>Students critique an AI defending a subtly wrong claim.</span></a>
+        <a class="card" href="artifacts/blp-onepager.html"><h3>The barrier is gone (BLP)</h3><span>How AI made a graduate-level method teachable.</span></a>
+      </noscript>
+    </div>
 
-  <footer>A CSSH AI Teaching Innovation &amp; Curricular Transformation resource · Northeastern University</footer>
+    <div class="intro" style="margin-top:2.4em">
+      <p><b>Have an example from your course?</b> Whether it uses AI or is designed to work around it, we'd like to feature it. <a href="get-help.html#share">Share your example →</a></p>
+      <p>Looking for more disciplines now? See the university-wide <a href="https://learning.northeastern.edu/ai/gallery/">CATLR AI Gallery</a>.</p>
+    </div>
+  </div>
+  </main>
+
+  <footer><a href="about.html">About &amp; sources</a> · Maintained by CSSH's Directors of AI Teaching Innovation and AI Curricular Transformation · Not an official Northeastern University publication</footer>
 
 <script>
 let ALL = [];
@@ -39,6 +56,7 @@ function chips(containerId, values, current, onPick){
   const c = document.getElementById(containerId);
   ["All", ...values].forEach(v=>{
     const b=document.createElement("button");
+    b.type="button";
     b.textContent=v; b.setAttribute("aria-pressed", v===current);
     b.onclick=()=>onPick(v);
     c.appendChild(b);
@@ -49,15 +67,16 @@ function render(){
   const grid=document.getElementById("grid");
   grid.innerHTML="";
   const items=ALL.filter(x=>(fDisc==="All"||x.discipline===fDisc)&&(fType==="All"||x.type===fType));
-  document.getElementById("empty").hidden = items.length>0;
+  document.getElementById("count").textContent = items.length
+    ? `Showing ${items.length} of ${ALL.length} examples`
+    : "No examples match those filters yet.";
   items.forEach(x=>{
     const a=document.createElement("a");
     a.className="card"; a.href=x.url;
-    a.innerHTML=`<b>${x.title}</b><span>${x.blurb}</span>
-      <div class="meta"><em>${x.discipline}</em><em>${x.type}</em></div>`;
+    a.innerHTML=`<h3>${x.title}</h3><span>${x.blurb}</span>
+      <div class="meta"><em>${x.discipline}</em><em>${x.type}</em>${x.format?`<em>Opens: ${x.format}</em>`:""}</div>`;
     grid.appendChild(a);
   });
-  // refresh pressed states
   document.querySelectorAll("#disc button").forEach(b=>b.setAttribute("aria-pressed", b.textContent===fDisc));
   document.querySelectorAll("#type button").forEach(b=>b.setAttribute("aria-pressed", b.textContent===fType));
 }
