@@ -12,7 +12,9 @@ A faculty-facing resource hub for the CSSH AI Curricular Transformation Initiati
 | `assignment-toolkit.html` | Self-serve toolkit — AI-resilient fixes by type, Build AI in, Check authentic work. Tabs are linkable (`#disc`, `#paper`, `#quant`, `#any`, `#integrate`, `#verify`) |
 | `examples.html` | Filterable gallery of all interactive examples |
 | `get-help.html` | Contacts, consult request, cohort/workshops, university support, guides |
+| `faq.html` | Common faculty questions (accordion) |
 | `about.html` | About the site + sources & credits |
+| `resources/resource-card.pdf` | Printable 2-up resource card with QR (source: `resources/resource-card.html`; regenerate with headless Chrome `--print-to-pdf`) |
 | `demo-live.html` | Live-session page — auto-generates scan-to-join QR codes |
 | `styles.css` | Shared Northeastern-style design system (edit once, all pages update) |
 | `examples.json` | **The one file you edit to add examples** |
