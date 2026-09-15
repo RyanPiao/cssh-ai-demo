@@ -99,6 +99,11 @@ table.labels{border-collapse:collapse;width:100%;font-size:.95rem}
 table.labels th,table.labels td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
 table.labels th{white-space:nowrap}
 .pill{display:inline-block;font-weight:700;font-size:.85rem;padding:2px 10px;border-radius:999px;background:var(--chip);color:var(--ink);border:1px solid var(--line)}
+details.guide{margin-top:.7em;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 16px;color:var(--ink)}
+details.guide summary{cursor:pointer;font-weight:700;color:var(--red)}
+details.guide h3{font-size:1rem;margin:1em 0 .3em;color:var(--black)}
+details.guide li{margin:.3em 0}
+@media print{details.guide{display:block}details.guide>*{display:block}}
 .linklike{background:none;border:0;padding:0;font:inherit;color:var(--red);text-decoration:underline;cursor:pointer}
 .todo{background:var(--note-bg);border:1px dashed var(--note-line);border-radius:6px;padding:0 6px;font-weight:600;color:var(--ink)}
 .source{font-size:.88rem;color:var(--muted)}
