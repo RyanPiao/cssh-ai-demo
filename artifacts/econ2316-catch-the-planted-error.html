@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catch the Planted Error</title>
+<style>
+  :root{
+    --bg:#faf7f2; --surface:#fffdf9; --ink:#2b2622; --muted:#6b6157;
+    --accent:#b23a2e; --accent2:#2f6f5e; --line:#e6ddd0;
+    --ai:#eef3f1; --stu:#f6ece6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1a1714; --surface:#221e19; --ink:#f0e9df; --muted:#a79a8a;
+      --accent:#e0745f; --accent2:#6fbfa6; --line:#372f27;
+      --ai:#20302b; --stu:#302420;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    padding:5vmin;display:flex;justify-content:center}
+  .wrap{max-width:900px;width:100%}
+  .kick{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+  h1{font-size:clamp(1.6rem,5vw,2.5rem);line-height:1.1;margin:.25em 0 .15em}
+  .sub{color:var(--muted);font-size:clamp(1rem,2.4vw,1.15rem);margin-bottom:1.4em}
+  .pattern{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+    border-radius:10px;padding:16px 20px;margin-bottom:1.6em}
+  .pattern b{color:var(--accent2)}
+  .chat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:1.4em}
+  .msg{padding:12px 16px;border-radius:12px;margin:10px 0;max-width:92%}
+  .ai{background:var(--ai);border:1px solid var(--line)}
+  .stu{background:var(--stu);border:1px solid var(--line);margin-left:auto}
+  .who{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.3em}
+  .flag{color:var(--accent);font-weight:600}
+  .dims{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:1.4em}
+  @media(max-width:600px){.dims{grid-template-columns:1fr}}
+  .dim{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .dim h3{margin:0 0 .2em;font-size:.82rem;color:var(--accent2);text-transform:uppercase;letter-spacing:.04em}
+  .dim p{margin:0;font-size:.92rem;color:var(--muted)}
+  .adapt{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:14px 18px;font-size:.95rem}
+  .adapt b{color:var(--accent)}
+  code{background:rgba(128,128,128,.14);padding:.08em .38em;border-radius:5px;font-size:.9em}
+
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:1.6em}
+  @media (max-width:640px){.ba{grid-template-columns:1fr}}
+  .ba div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+  .ba h3{margin:0 0 .3em;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}
+  .ba .before h3{color:var(--muted)} .ba .after h3{color:var(--accent2)}
+  .ba p{margin:0;font-size:.95rem}
+  pre{background:rgba(128,128,128,.12);border-radius:8px;padding:10px 12px;overflow-x:auto;font-size:.85rem;margin:.5em 0 0}
+  .note{color:var(--muted);font-size:.85rem;margin:-.6em 0 1.4em}
+  .checks{width:100%;border-collapse:collapse;margin:.4em 0 1.6em;font-size:.93rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .checks th,.checks td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .checks th{font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .pass{color:var(--accent2);font-weight:600} .fail{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">A transferable teaching pattern · ECON 2316 example</div>
+  <h1>Catch the Planted Error</h1>
+  <div class="sub">The AI solves a problem, then re-solves it with an error it hides on purpose. Students hunt for the error
+    with quick checks that cost far less than redoing the work. The best finding is a check that passed on a wrong answer.</div>
+
+  <div class="pattern">
+    <b>The pattern (any discipline):</b> teach a few cheap structural checks a correct answer must pass → have the AI plant one
+    plausible error → students run the checks and report which caught it and which missed it. It builds the habit people
+    actually need: deciding whether an answer is right without redoing it.
+  </div>
+
+  <div class="ba">
+    <div class="before"><h3>Before</h3><p>Students asked the AI to solve the problem and handed in its answer. A confident, wrong solution
+      looked exactly like a right one.</p></div>
+    <div class="after"><h3>After</h3><p>Students solve on paper, then ask the AI to re-solve with a hidden mistake. They run four
+      one-line checks, find the error, and explain which check earned its keep.</p></div>
+  </div>
+
+  <div class="chat">
+    <div class="msg stu"><div class="who">Student prompt</div>
+      Maximise U = x<sup>0.4</sup>y<sup>0.6</sup> subject to 5x + 2y = 200. Now re-solve it, but make one plausible error somewhere
+      in the middle and don't tell me where. Present it as a normal, confident solution.</div>
+    <div class="msg ai"><div class="who">AI</div>
+      Setting MRS equal to the price ratio and using the budget, the optimum is <b>x* = 24, y* = 40</b>.</div>
+    <div class="msg stu"><div class="who">Student check</div>
+      The budget check <span class="flag">passes</span>: 5(24) + 2(40) = 200. But spending on x is 120, which is 60% of income,
+      and the exponent on x is 0.4. Cobb-Douglas shares must match the exponents, so x* should be 0.4 × 200 / 5 = 16 and
+      y* = 60. You swapped the exponents.</div>
+  </div>
+
+  <table class="checks">
+    <tr><th>Check</th><th>What a correct answer must satisfy</th><th>On x = 24, y = 40</th></tr>
+    <tr><td>Budget binds</td><td>5x + 2y = 200</td><td class="pass">Passes (200), despite the error</td></tr>
+    <tr><td>Tangency</td><td>MRS = (0.4/0.6)(y/x) equals 5/2</td><td class="fail">Fails (1.11 ≠ 2.5)</td></tr>
+    <tr><td>Spending shares</td><td>40% of income on x, 60% on y</td><td class="fail">Fails (60% on x)</td></tr>
+    <tr><td>Same λ from both goods</td><td>MU<sub>x</sub>/5 = MU<sub>y</sub>/2</td><td class="fail">Fails</td></tr>
+  </table>
+
+  <div class="dims">
+    <div class="dim"><h3>AI-THINK</h3><p>Checks that cost less than the original work, and knowing which ones are weak.</p></div>
+    <div class="dim"><h3>AI-DATA</h3><p>A fluent, confident answer can be wrong in a way that passes the obvious test.</p></div>
+    <div class="dim"><h3>AI-ETHICS</h3><p>Paper first, so the student's own reasoning is on record before the AI speaks.</p></div>
+    <div class="dim"><h3>AI-CREATE</h3><p>Students judge cost against coverage and design their own check for another course.</p></div>
+  </div>
+
+  <div class="adapt">
+    <b>Adapt it:</b> Writing: the AI summarises an article with one planted misreading; students check who claims what, and with
+    what evidence. History: an AI timeline with one wrong date or place; students check it against the sources. Policy: a budget
+    table with one error that still adds up; students check units and per-person figures. <em>Teach the cheap checks, then let the
+    AI hide something.</em>
+  </div>
+</div>
+</body>
+</html>

@@ -27,6 +27,24 @@
     "featured": true
   },
   {
+    "title": "Catch the planted error",
+    "blurb": "The AI hides a plausible error in a solution; students find it with quick checks, including one that passes on a wrong answer. From an ECON 2316 AI Lab.",
+    "url": "artifacts/econ2316-catch-the-planted-error.html",
+    "discipline": "Economics",
+    "type": "Assessment redesign",
+    "format": "Web page",
+    "featured": true
+  },
+  {
+    "title": "Check the AI against your own number",
+    "blurb": "Students do a step by hand, have the AI do the same step, and check it against the number they trust. Graded on the checking, not the AI's code. From ECON 3916/5200 labs.",
+    "url": "artifacts/econ-check-against-your-own-number.html",
+    "discipline": "Economics",
+    "type": "Assessment redesign",
+    "format": "Web page",
+    "featured": true
+  },
+  {
     "title": "Live class poll",
     "blurb": "Students generate real data in class, then analyze it. An AI-resilient activity: the material only exists once class meets.",
     "url": "https://ryanpiao.github.io/econ-lectures/econ1116/ch08-consumer-choice/#/utility-survey",

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check the AI Against Your Own Number</title>
+<style>
+  :root{
+    --bg:#faf7f2; --surface:#fffdf9; --ink:#2b2622; --muted:#6b6157;
+    --accent:#b23a2e; --accent2:#2f6f5e; --line:#e6ddd0;
+    --ai:#eef3f1; --stu:#f6ece6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1a1714; --surface:#221e19; --ink:#f0e9df; --muted:#a79a8a;
+      --accent:#e0745f; --accent2:#6fbfa6; --line:#372f27;
+      --ai:#20302b; --stu:#302420;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    padding:5vmin;display:flex;justify-content:center}
+  .wrap{max-width:900px;width:100%}
+  .kick{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+  h1{font-size:clamp(1.6rem,5vw,2.5rem);line-height:1.1;margin:.25em 0 .15em}
+  .sub{color:var(--muted);font-size:clamp(1rem,2.4vw,1.15rem);margin-bottom:1.4em}
+  .pattern{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+    border-radius:10px;padding:16px 20px;margin-bottom:1.6em}
+  .pattern b{color:var(--accent2)}
+  .chat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:1.4em}
+  .msg{padding:12px 16px;border-radius:12px;margin:10px 0;max-width:92%}
+  .ai{background:var(--ai);border:1px solid var(--line)}
+  .stu{background:var(--stu);border:1px solid var(--line);margin-left:auto}
+  .who{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.3em}
+  .flag{color:var(--accent);font-weight:600}
+  .dims{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:1.4em}
+  @media(max-width:600px){.dims{grid-template-columns:1fr}}
+  .dim{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .dim h3{margin:0 0 .2em;font-size:.82rem;color:var(--accent2);text-transform:uppercase;letter-spacing:.04em}
+  .dim p{margin:0;font-size:.92rem;color:var(--muted)}
+  .adapt{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:14px 18px;font-size:.95rem}
+  .adapt b{color:var(--accent)}
+  code{background:rgba(128,128,128,.14);padding:.08em .38em;border-radius:5px;font-size:.9em}
+
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:1.6em}
+  @media (max-width:640px){.ba{grid-template-columns:1fr}}
+  .ba div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+  .ba h3{margin:0 0 .3em;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}
+  .ba .before h3{color:var(--muted)} .ba .after h3{color:var(--accent2)}
+  .ba p{margin:0;font-size:.95rem}
+  pre{background:rgba(128,128,128,.12);border-radius:8px;padding:10px 12px;overflow-x:auto;font-size:.85rem;margin:.5em 0 0}
+  .note{color:var(--muted);font-size:.85rem;margin:-.6em 0 1.4em}
+  .checks{width:100%;border-collapse:collapse;margin:.4em 0 1.6em;font-size:.93rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .checks th,.checks td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .checks th{font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .pass{color:var(--accent2);font-weight:600} .fail{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">A transferable teaching pattern · ECON 3916 / 5200 example</div>
+  <h1>Check the AI Against Your Own Number</h1>
+  <div class="sub">Students do a step by hand first. Then the AI does the same step, and the student checks it
+    against the number they already have. The grade is for the checking, not for the AI's code.</div>
+
+  <div class="pattern">
+    <b>The pattern (any discipline):</b> the student produces a result themselves → the AI produces the same result →
+    the student compares the two against a value they trust, fixes their prompt once, and explains the key step in
+    their own words. You can't check what you couldn't have done yourself, so the AI only gets tasks the student could do.
+  </div>
+
+  <div class="ba">
+    <div class="before"><h3>Before</h3><p>Each lab ended with a ready-made prompt. Students pasted it and got back a whole dashboard
+      they could not have written, so they had no way to tell whether it was right. The lab taught pasting.</p></div>
+    <div class="after"><h3>After</h3><p>Students write a short function by hand, then ask the AI to write the same one. They run both,
+      compare the results against the number the lab already computed, revise their prompt once to fix a flaw they found,
+      and explain two lines of the code in their own words.</p></div>
+  </div>
+
+  <div class="chat">
+    <div class="msg stu"><div class="who">Student prompt</div>
+      I computed a bootstrap standard error for the mean by hand in Step 4 of this lab: <b>0.41</b>. Write a Python function
+      <code>boot_se(x, reps=1000)</code> that does the same. Comment each line.</div>
+    <div class="msg ai"><div class="who">AI</div>
+      Here is the function:
+      <pre>def boot_se(x, reps=1000):
+    means = [np.mean(np.random.choice(x, len(x), replace=False))
+             for _ in range(reps)]
+    return np.std(means)</pre></div>
+    <div class="msg stu"><div class="who">Student check</div>
+      Your function returns <span class="flag">0.00</span>, not 0.41. You sample <em>without</em> replacement, so every
+      "resample" is the same data in a different order and every mean is identical. A bootstrap has to sample
+      <em>with</em> replacement. My revised prompt now says so explicitly.</div>
+    <div class="msg ai"><div class="who">AI</div>
+      You're right. With <code>replace=True</code> the function returns 0.41, matching your Step 4 value.</div>
+  </div>
+  <p class="note">Illustrative numbers. The real labs name the exact value to match, for example "your table must reproduce the 0.532 from Step 12."</p>
+
+  <div class="dims">
+    <div class="dim"><h3>AI-THINK</h3><p>Verification against an independent value the student trusts, not "it ran, so it's right."</p></div>
+    <div class="dim"><h3>AI-DATA</h3><p>Sees how code can run cleanly and still be wrong in a way only a check reveals.</p></div>
+    <div class="dim"><h3>AI-ETHICS</h3><p>Ownership: students submit the full chat and explain the lines they hand in.</p></div>
+    <div class="dim"><h3>AI-CREATE</h3><p>Judgment about when to stop, and when to do a step without AI.</p></div>
+  </div>
+
+  <div class="adapt">
+    <b>Adapt it:</b> Writing: the student outlines the argument first, the AI drafts, and the student checks every claim against their outline and sources.
+    History: the student dates and places a document, then checks the AI's reading of it. Policy: the student computes the cost
+    per person served by hand, then checks that the AI's table reproduces it. <em>Do it yourself once, then check the AI against it.</em>
+  </div>
+</div>
+</body>
+</html>
