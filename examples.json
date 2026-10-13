@@ -45,6 +45,15 @@
     "featured": true
   },
   {
+    "title": "A five-step AI lab sequence",
+    "blurb": "One short lab per unit, each teaching one AI skill on that unit's theory: ask, check, generate, argue, and when not to use it. Paper first, with a no-AI alternative. From ECON 2316.",
+    "url": "artifacts/econ2316-five-step-ai-labs.html",
+    "discipline": "Economics",
+    "type": "Course design",
+    "format": "Web page",
+    "featured": true
+  },
+  {
     "title": "Live class poll",
     "blurb": "Students generate real data in class, then analyze it. An AI-resilient activity: the material only exists once class meets.",
     "url": "https://ryanpiao.github.io/econ-lectures/econ1116/ch08-consumer-choice/#/utility-survey",
